@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- pembukaan dokumen html -->
+<html lang="en">
+    <!-- pengaturan head -->
+    <head>
+        <!-- mengatur link untuk mengambil font dari google font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat: wght@500&display=swap" rel="stylesheet">
+        <!-- mengatur link untuk mengambil style css dari file styles.css dalam folder static -->
+        <link href="/static/styles.css" rel="stylesheet">
+        <!-- mengatur judul halaman web -->
+        <title>Birthdays</title>
+    </head>
+    <!-- pengaturan body atau badan halaman web -->
+    <body>
+        <!-- membuat tulisan judul/heading besar -->
+        <div class="jumbotron">
+            <h1>Birthdays</h1>
+        </div>
+        <!-- membuat formulir untuk mengisikan data ulangtahun -->
+        <div class="container">
+            <div class="section">
+                <h2>Add a birthday.</h2>
+                <!-- pembukaan form, pemberian method POST pada form -->
+                <form action="/" method="POST">
+                    <!-- membuat input teks -->
+                    <input name="name" placeholder="Name" type="text">
+                   <!-- membuat input number -->
+                   <input name="month" placeholder="Month" type="number" min="1" max="12">
+                   <input name="day" placeholder="Day" type="number" min="1" max="31">
+                   <!-- membuat tombol submit -->
+                   <input type="submit" value="Add Birthday">
+                   <!-- penutupan form -->
+                </form>
+            </div>
+            <!--membuat tabel HTML untuk menampilkan data dari tabel brithdays dalam database-->
+            <div class="section">
+                <!--pembukaan tabel-->
+                <table>
+                    <!--kepala tabel-->
+                    <thead>
+                        <!--baris judul kolom atau table heacing-->
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <!--badan tabel-->
+                    <body>
+                        <!--mengambil data dari variabel global brithdays yang dikirim dari app.py-->
+                        <!--mengunakan perulangan for untuk menampilkan data satu persatu
+                            (proses penampilan iklan data terus berulang untuk setiap data) hingga data habis-->
+                        {% for birthday in birthdays %}
+                            <tr>
+                                <!-- menampilkan isi kolom name -->
+                                <td>{{ birthday.name}}</td>
+                                <!-- menampilkan isi kolom month dan day -->
+                                <td>{{ birthday.month }}/{{ birthday. day }}</td>
+                            </tr>
+                        <!-- akhir dari perulangan -->
+                        {% endfor %}
+                    </tbody>
+                <!-- penutupan tabel -->
+                </table>
+            </div>
+        </div>
+    </body>
+<!-- penutupan dokumen html -->
+</html>
+       
